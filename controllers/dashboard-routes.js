@@ -7,10 +7,16 @@ router.get('/', withAuth, async (req, res) => {
   try {
     // store the results of the db query in a variable called postData. should use something that "finds all" from the Post model. may need a where clause!
     const postData = await Post.findAll({
-      // WHERE clause? to show only signed in user's blog posts
+      // only show signed in user's blog posts
       where: {
-        userId: req.body.userId,
+        userId: req.session.userId,
       },
+      attributes: [
+        'postId',
+        'title',
+        'dateCreated',
+        'postContent'
+      ],
     });
     // this sanitizes the data we just got from the db above (you have to create the above)
     const posts = postData.map((post) => post.get({ plain: true }));
