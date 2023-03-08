@@ -35,6 +35,8 @@ Post.init(
     {
         sequelize,
         freezeTableName: true,
-        modelName: 'comment',
+        modelName: 'post',
     },
 );
+
+module.exports = Post;
