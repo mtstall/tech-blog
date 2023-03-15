@@ -31,9 +31,9 @@ Comment.init(
             type: DataTypes.STRING,
             allowNull: false,
           },
-          dateCreated: {
+        //   dateCreated: {
 
-          },
+        //   },
 
     },
     {

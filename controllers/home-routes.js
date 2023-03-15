@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     // we need to get all Posts and include the User for each (change lines 8 and 9)
     const postData = await Post.findAll({
-      include: [{model: User, attributes: ['userId']}],
+      include: [{model: User, attributes: ['id']}],
     });
     // serialize the data
     const posts = postData.map((post) => post.get({ plain: true }));
