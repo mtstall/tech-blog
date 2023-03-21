@@ -1,3 +1,6 @@
-<div><h2>Your get route is working!</h2></div>
-<div><h3>{{title}}</h3>
-<p>{{postContent}}</p></div>
+{{#each posts as |post|}}
+    <div class="row justify-space-between-md">
+        <h2 class="page-title">{{title}}</h2>
+        <p>{{postContent}}</p>
+    </div>
+{{/each}}
