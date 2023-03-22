@@ -20,6 +20,15 @@ const loginFormHandler = async function(event) {
   }
 };
 
+const redirectToSignUp = async function(event) {
+  event.preventDefault();
+  document.location.replace('/signup');
+}
+
 document
-  .querySelector('#login-form') // what is this?
+  .querySelector('#login-form')
   .addEventListener('submit', loginFormHandler);
+
+document 
+  .querySelector('#signup')
+  .addEventListener('click',redirectToSignUp);
