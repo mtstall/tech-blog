@@ -5,12 +5,12 @@ const userData =
     {
         id: 1,
         username: "mtstall",
-        password: "12345"
+        password: "123456"
     },
     {
         id: 2,
         username: "goofy",
-        password: "goofy"
+        password: "goofy1"
     },
 ];
 

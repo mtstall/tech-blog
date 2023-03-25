@@ -47,7 +47,7 @@ router.post('/login', async (req, res) => {
       res.status(400).json({ message: 'No user account found!' });
       return;
     }
-    console.log("hello")
+
     const validPassword = await user.checkPassword(req.body.password);
     console.log(validPassword);
 
@@ -65,7 +65,6 @@ router.post('/login', async (req, res) => {
       res.json({ user: user, message: 'You are now logged in!' });
     });
   } catch (err) {
-    console.log("catch block");
     res.status(400).json({ message: 'No user account found!' });
   }
 });
