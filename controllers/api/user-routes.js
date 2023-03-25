@@ -1,6 +1,16 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// get all users
+router.get('/allusers', async (req, res) => {
+  try {
+    const userData = await User.findAll({});
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // create new user
 router.post('/', async (req, res) => {
   try {
@@ -21,23 +31,28 @@ router.post('/', async (req, res) => {
   }
 });
 
-// 
+// finding/validating login info
 router.post('/login', async (req, res) => {
   try {
+    console.log("inside login route")
     const user = await User.findOne({
       where: {
         username: req.body.username,
       },
     });
+    //console.log(user);
 
     if (!user) {
+      //console.log("error");
       res.status(400).json({ message: 'No user account found!' });
       return;
     }
-
-    const validPassword = user.checkPassword(req.body.password);
+    console.log("hello")
+    const validPassword = await user.checkPassword(req.body.password);
+    console.log(validPassword);
 
     if (!validPassword) {
+      console.log("invalid password");
       res.status(400).json({ message: 'No user account found!' });
       return;
     }
@@ -47,9 +62,10 @@ router.post('/login', async (req, res) => {
       req.session.username = user.username;
       req.session.loggedIn = true;
 
-      res.json({ user, message: 'You are now logged in!' });
+      res.json({ user: user, message: 'You are now logged in!' });
     });
   } catch (err) {
+    console.log("catch block");
     res.status(400).json({ message: 'No user account found!' });
   }
 });

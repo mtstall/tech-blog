@@ -33,6 +33,10 @@ User.init(
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
                 return newUserData;
             },
+            async beforeUpdate(updatedUserData) {
+                updatedUserData.username = await updatedUserData.username.toLowerCase();
+                return updatedUserData;
+            },
         },
         sequelize,
         freezeTableName: true,
