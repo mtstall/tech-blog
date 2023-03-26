@@ -4,6 +4,11 @@ const bcrypt = require('bcrypt');
 
 class User extends Model {
     checkPassword(loginPw) {
+        console.log("loginPw: ",loginPw);
+        console.log(typeof loginPw);
+        console.log("this.password: ",this.password);
+        console.log(typeof this.password);
+        console.log("bcrypt: ",bcrypt.compareSync(loginPw, this.password));
         return bcrypt.compareSync(loginPw, this.password);
       }
 }
@@ -32,6 +37,7 @@ User.init(
         hooks: {
             async beforeCreate(newUserData) {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                console.log("hashed password: ",newUserData);
                 return newUserData;
             },
             async beforeUpdate(updatedUserData) {

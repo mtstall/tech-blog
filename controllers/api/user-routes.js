@@ -12,8 +12,9 @@ router.get('/allusers', async (req, res) => {
 });
 
 // create new user
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
+    console.log("inside signup route");
     const newUser = await User.create({
       username: req.body.username,
       password: req.body.password,
@@ -34,13 +35,12 @@ router.post('/', async (req, res) => {
 // finding/validating login info
 router.post('/login', async (req, res) => {
   try {
-    console.log("inside login route")
     const user = await User.findOne({
       where: {
         username: req.body.username,
       },
     });
-    //console.log(user);
+    console.log(user);
 
     if (!user) {
       //console.log("error");
@@ -48,11 +48,9 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await user.checkPassword(req.body.password);
-    console.log(validPassword);
+    const validPassword = user.checkPassword(req.body.password);
 
     if (!validPassword) {
-      console.log("invalid password");
       res.status(400).json({ message: 'No user account found!' });
       return;
     }
