@@ -11,9 +11,11 @@ router.get("/", withAuth, async (req, res) => {
       // only show signed in user's blog posts
       where: {
         userId: req.session.userId,
-      },
- //     attributes: ["id", "title", "postContent"],
-      //include: [{ model: User, attributes: ["id", "username"] }],
+      },      
+      include: [{ model: User, attributes: ["id", "username"]}],
+      attributes: {
+        include: ["id", "title", "postContent"],
+      }
     });
     // this sanitizes the data we just got from the db above (you have to create the above)
     const posts = postData.map((post) => post.get({ plain: true }));
