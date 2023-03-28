@@ -10,12 +10,12 @@ router.get('/', withAuth, async (req, res) => {
     const postData = await Post.findAll({
       // only show signed in user's blog posts
       where: {
-        userId: req.session.userId,
+        userId: req.session.id,
       },
       attributes: [
-        'postId',
+        'id',
         'title',
-        'dateCreated',
+        //'dateCreated',
         'postContent'
       ],
     });

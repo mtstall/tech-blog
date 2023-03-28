@@ -21,7 +21,7 @@ router.post('/signup', async (req, res) => {
     });
 
     req.session.save(() => {
-      req.session.userId = newUser.id;
+      req.session.id = newUser.id;
       req.session.username = newUser.username;
       req.session.loggedIn = true;
 
@@ -56,7 +56,7 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.userId = user.id;
+      req.session.id = user.id;
       req.session.username = user.username;
       req.session.loggedIn = true;
 
