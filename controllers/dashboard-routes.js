@@ -4,13 +4,12 @@ const withAuth = require('../utils/auth');
 
 // get all posts
 router.get('/', withAuth, async (req, res) => {
-  console.log("you're hitting the get route");
   try {
     // store the results of the db query in a variable called postData. should use something that "finds all" from the Post model. may need a where clause!
     const postData = await Post.findAll({
       // only show signed in user's blog posts
       where: {
-        userId: req.session.id,
+        userId: req.session.userId,
       },
       attributes: [
         'id',
@@ -20,8 +19,9 @@ router.get('/', withAuth, async (req, res) => {
       ],
     });
     // this sanitizes the data we just got from the db above (you have to create the above)
+    console.log("post data: ",postData);
     const posts = postData.map((post) => post.get({ plain: true }));
-
+    console.log(posts);
     // fill in the view to be rendered
     //NOT SURE IF THIS IS RIGHT
     res.render('all-posts-admin', {
