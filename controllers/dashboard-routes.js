@@ -4,6 +4,7 @@ const withAuth = require('../utils/auth');
 
 // get all posts
 router.get('/', withAuth, async (req, res) => {
+  console.log("you're hitting the get route");
   try {
     // store the results of the db query in a variable called postData. should use something that "finds all" from the Post model. may need a where clause!
     const postData = await Post.findAll({
