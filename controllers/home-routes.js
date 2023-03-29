@@ -23,12 +23,7 @@ router.get('/post/:id', async (req, res) => {
   try {
     // what should we pass here? we need to get some data passed via the request body (something.something.id?)
     // change the model below, but not the findByPk method.
-    // IS THE REQ.PARAMS.POSTID RIGHT?
-    const postData = await Post.findByPk(req.params.postId, {
-      // need help here
-      where: {
-        userId: req.session.userId,
-      }, 
+    const postData = await Post.findByPk(req.params.id, {
       include: [
         User,
         {
