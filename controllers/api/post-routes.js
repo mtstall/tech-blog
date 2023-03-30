@@ -21,6 +21,7 @@ router.post('/', withAuth, async (req, res) => {
 // update post
 router.put('/:id', withAuth, async (req, res) => {
   try {
+    console.log("you're hitting the update post route");
     const [affectedRows] = await Post.update(req.body, {
       where: {
         id: req.params.id,
