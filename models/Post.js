@@ -27,10 +27,6 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false,
           },
-        //   dateCreated: {
-
-        //   },
-
     },
     {
         sequelize,

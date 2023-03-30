@@ -5,7 +5,7 @@ const withAuth = require("../utils/auth");
 // get all posts
 router.get("/", withAuth, async (req, res) => {
   try {
-    console.log("req.session.userId: ",req.session.userId);
+    //console.log("req.session.userId: ",req.session.userId);
     // store the results of the db query in a variable called postData. should use something that "finds all" from the Post model. may need a where clause!
     const postData = await Post.findAll({
       // only show signed in user's blog posts

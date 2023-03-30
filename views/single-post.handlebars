@@ -1,0 +1,26 @@
+<div class="row justify-space-between-md">
+      <h2 class="page-title">{{post.title}}</h2>
+      <p>{{post.postContent}}</p>
+      <p>Posted by {{post.user.username}} on {{format_date post.user.createdAt}}.</p>
+    </div>
+
+<div class="row justify-space-between-md">
+{{#if post.comments}}
+    <h2 class="comment-section-title">Comment Section:</h2>
+{{#each post.comments as |comment|}}
+    <h4 class="comment-body">{{comment.commentContent}}</h4>
+    <p>Posted by {{comment.user.username}} on {{format_date comment.user.createdAt}}.</p>
+{{/each}}
+{{/if}}
+</div>
+
+<input type="hidden" id="post-id" value="{{post.id}}" />
+<div class="card">
+    <form class="card-body" id="new-comment-form">
+        <p class="form-label">Leave a Comment:</p>
+        <textarea class="card-body form-input" id="comment-body" name="comment-body"></textarea>
+        <button type="submit" class="btn">Post Comment</button>
+    </form>
+</div>
+
+  <script src="/js/comment.js"></script>

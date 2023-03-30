@@ -3,7 +3,7 @@
     <div class="row justify-space-between-md">
       <h2 class="page-title">{{title}}</h2>
       <p>{{postContent}}</p>
-      <p>Posted by {{user.username}} on {{createdAt}}.</p>
+      <p>Posted by {{user.username}} on {{format_date createdAt}}.</p>
     </div>
   </a>
 {{/each}}
