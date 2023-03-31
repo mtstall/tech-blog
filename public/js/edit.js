@@ -29,8 +29,8 @@ const deleteClickHandler = async function() {
 };
 
 document
-  .querySelector('#edit-post-form')
-  .addEventListener('submit', editFormHandler);
+  .querySelector('#update-post-btn')
+  .addEventListener('click', editFormHandler);
 document
   .querySelector('#delete-btn')
   .addEventListener('click', deleteClickHandler);
