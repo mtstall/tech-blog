@@ -1,18 +1,16 @@
-const postId = document.querySelector('#post-id').value;
+const postId = document.querySelector('#post-id').textContent;
 
 const editFormHandler = async function(event) {
   event.preventDefault();
 
-  const title = document.querySelector('#title-input-update-post').value;
-  const body = document.querySelector('#body-input-update-post').value;
-console.log(title);
-console.log(body);
-console.log(postId);
+  const title = document.querySelector('#title-input-edit-post').value;
+  const postContent = document.querySelector('#body-input-edit-post').value;
+
   await fetch(`/api/post/${postId}`, {
     method: 'PUT',
     body: JSON.stringify({
       title,
-      body
+      postContent
     }),
     headers: {
       'Content-Type': 'application/json'
