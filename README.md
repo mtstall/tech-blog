@@ -45,7 +45,7 @@ To run this project, you will need to add the following environment variables to
 ```
 
 ## Demo
-
+<img width="951" alt="tech-blog-screenshot" src="https://user-images.githubusercontent.com/114170872/229113155-3e96cf34-0f6d-4c67-950f-8f0fa222a2ff.png">
 
 
 ## Deployment
