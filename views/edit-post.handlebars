@@ -1,20 +1,22 @@
 <div class="row justify-space-between-md">
-  <div class="new-post-card">
-    <h2 class="page-title">Edit your existing post:</h2>
-    <div class="hidden" id="post-id">{{post.id}}</div>
+  <div class="new-post-card card">
+    <h2 class="page-title card-header">Edit your existing post:</h2>
     <form class="form edit-post-form" id = "edit-post-form">
       <div class="form-group">
-        <label for="title-edit-post">Title:</label>
+        <label for="title-edit-post card-body">Title:</label>
         <input class="form-input" type="text" id="title-input-edit-post" placeholder="{{post.title}}" />
       </div>
       <div class="form-group">
         <label for="body-edit-post">Body:</label>
         <input class="form-input" type="body" id="body-input-edit-post" placeholder="{{post.postContent}}" />
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Update Post</button>
-      </div>
     </form>
   </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Update Post</button>
+    <button class="btn btn-primary" type="submit" id="delete-btn">Delete Post</button>
+  </div>
+  <p class="hidden" id="post-id">{{post.id}}</p>
 
 <script src="/js/edit.js"></script>

@@ -7,6 +7,10 @@
   --border-radius: 0.3rem;
 }
 
+.hidden {
+  color: var(--primary);
+}
+
 /* a tag formatting */
 a {
   color: var(--dark);

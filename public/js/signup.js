@@ -12,10 +12,8 @@ const signupFormHandler = async function(event) {
     }),
     headers: { 'Content-Type': 'application/json' },
   });
-  console.log("hi");
 
   if (response.ok) {
-    console.log("ok response");
     document.location.replace('/dashboard');
   } else {
     alert('Failed to sign up');

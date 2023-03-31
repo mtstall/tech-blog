@@ -14,12 +14,10 @@ router.get('/allusers', async (req, res) => {
 // create new user
 router.post('/signup', async (req, res) => {
   try {
-    console.log("inside signup route");
     const newUser = await User.create({
       username: req.body.username,
       password: req.body.password,
     });
-    console.log("newUser.id: ",newUser.id);
 
     req.session.save(() => {
       req.session.userId = newUser.id;
@@ -41,10 +39,8 @@ router.post('/login', async (req, res) => {
         username: req.body.username,
       },
     });
-    console.log(user);
 
     if (!user) {
-      //console.log("error");
       res.status(400).json({ message: 'No user account found!' });
       return;
     }
@@ -69,8 +65,6 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  console.log("you're hitting the logout route");
-  console.log(req.session.loggedIn);
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
